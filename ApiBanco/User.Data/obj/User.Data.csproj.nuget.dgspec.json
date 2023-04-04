@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bruno\\source\\repos\\ApiBanco\\User.Data\\User.Data.csproj": {}
+    "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bruno\\source\\repos\\ApiBanco\\User.Data\\User.Data.csproj": {
+    "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\ApiBanco\\User.Data\\User.Data.csproj",
+        "projectUniqueName": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj",
         "projectName": "User.Data",
-        "projectPath": "C:\\Users\\bruno\\source\\repos\\ApiBanco\\User.Data\\User.Data.csproj",
+        "projectPath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj",
         "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruno\\source\\repos\\ApiBanco\\User.Data\\obj\\",
+        "outputPath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

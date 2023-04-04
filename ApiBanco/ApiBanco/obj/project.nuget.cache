@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L5Eo5gvwQLiRgE6BhGx6kJHtSnpkd/7820acd6Ml6/HuKqVyJ6w0wsKCeecegCXNWu10l7wDwdgCFYepx3w4Jw==",
+  "dgSpecHash": "hx4d1JRTKFYoj0rQd9nU1Wa0uupiHPEh4GME5r0gXVMRKdtyYS5lyV5VP8vmnBXlllkGDzMXEIQwUe18IBYDgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bruno\\source\\repos\\ApiBanco\\ApiBanco\\ApiBanco.csproj",
+  "projectFilePath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\ApiBanco\\ApiBanco.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

@@ -23,16 +23,14 @@ namespace User.Data.Repository
             return lisUsers.FirstOrDefault(x => x.UserId == id);
         }
 
-        public Users UpdateUserByID(string id, decimal balance)
-        {
+        //public Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense)
+        //{
+        //    var user = GetUserByID(id);
 
-            var user = GetUserByID(id);
 
-            user.Balance += balance;
+        //    return user;
+        //}
 
-            return lisUsers.FirstOrDefault(x => x.UserId == id);
-
-        }
 
     }
 }

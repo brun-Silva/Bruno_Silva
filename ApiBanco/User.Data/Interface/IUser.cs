@@ -10,7 +10,7 @@ namespace User.Data.Interface
    public interface IUser
     {
         Users GetUserByID(string id);
-        Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense);
+        //Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense);
 
     }
 }

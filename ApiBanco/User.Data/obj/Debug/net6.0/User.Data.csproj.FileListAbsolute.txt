@@ -10,3 +10,15 @@ C:\Users\bruno\source\repos\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.dll
 C:\Users\bruno\source\repos\ApiBanco\User.Data\obj\Debug\net6.0\refint\User.Data.dll
 C:\Users\bruno\source\repos\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.pdb
 C:\Users\bruno\source\repos\ApiBanco\User.Data\obj\Debug\net6.0\ref\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.csproj.AssemblyReference.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.AssemblyInfoInputs.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.AssemblyInfo.cs
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.csproj.CoreCompileInputs.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\refint\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.deps.json
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\ref\User.Data.dll

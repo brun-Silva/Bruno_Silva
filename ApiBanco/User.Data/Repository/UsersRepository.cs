@@ -26,8 +26,6 @@ namespace User.Data.Repository
         //public Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense)
         //{
         //    var user = GetUserByID(id);
-
-
         //    return user;
         //}
 

@@ -12,7 +12,7 @@ namespace User.Data.Models
         public decimal Value { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Type { get; set; }
+        public string? Type { get; set; }
         public DateTime DateTransaction { get; set; }
         public string Attachment { get; set; }
         public string fkUserID { get; set; }

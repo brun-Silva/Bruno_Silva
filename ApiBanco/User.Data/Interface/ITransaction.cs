@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +8,12 @@ using User.Data.Models;
 
 namespace User.Data.Interface
 {
-    public class ITransaction
+    public interface ITransaction
     {
 
-        //Transaction UpdateUserByID(string uid, int idTr, string typeUp);
-
+        Transaction GetTransactionByID(int Id);
+        Transaction UpdateTransactionByID(int idTransaction, decimal newValue, string newDescription, string newTitle, string newType, DateTime  newDateTime);
+        Transaction DeleteTransactionByID(int idTransaction);
+        List <Transaction> GetTransactTypeByUserId(string uid, string type);
     }
 }

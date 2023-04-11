@@ -22,3 +22,5 @@ C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\n
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.dll
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.pdb
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\ref\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\bin\Debug\net6.0\User.Data.runtimeconfig.json
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\User.Data\obj\Debug\net6.0\User.Data.genruntimeconfig.cache

@@ -3,8 +3,11 @@
     "",
     "\\ApiBanco",
     "\\ApiBanco\\Controllers",
-    "\\User.Data"
+    "\\User.Data",
+    "\\User.Data\\Factory",
+    "\\User.Data\\Interface",
+    "\\User.Data\\Repository"
   ],
-  "SelectedNode": "\\ApiBanco\\Controllers\\UserController.cs",
+  "SelectedNode": "\\User.Data\\Interface\\IGenericRepository.cs",
   "PreviewInSolutionExplorer": false
 }

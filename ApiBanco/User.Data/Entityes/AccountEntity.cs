@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -12,13 +15,32 @@ namespace User.Data.Models
     // user model 
     public class AccountEntity : EntityBase
     {
-        public int id { get; set; }
-        public string UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public decimal Balance { get; set; }
         public decimal Incomes { get; set; }
         public decimal Expense { get; set; }
     }
+    public class AccountTypeConfiguration : EntityTypeConfigurationBase<AccountEntity>
+    {
+        public override void Configure(EntityTypeBuilder<AccountEntity> builder)
+        {
+            base.Configure(builder);
 
+
+            builder.ToTable("Account");
+
+            builder.Property(x => x.FirstName)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(x => x.LastName)
+                .HasMaxLength (50)
+                .IsRequired();
+            builder.Property(x => x.Balance);
+
+            builder.Property(x => x.Incomes);
+            builder.Property (x => x.Expense);
+        }
+    }
 }

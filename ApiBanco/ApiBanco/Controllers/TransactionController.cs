@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
+using User.Data.DTOs;
+using User.Data.Entityes;
 using User.Data.Factory;
 using User.Data.Interface;
 using User.Data.Models;
@@ -12,13 +14,33 @@ namespace ApiBanco.Controllers
     [Route("[controller]")]
     public class TransactionController : Controller
     {
-        private readonly IGenericRepository _genericReposity;
+        private readonly IGenericRepository<TransactionEntity> _transactionReposity;
         private readonly IDTOFactory _DTOFactory;
-        public TransactionController(IGenericRepository genericReposity, IDTOFactory DTOFactory)
+        public TransactionController(IGenericRepository<TransactionEntity> transactionReposity, IDTOFactory DTOFactory)
         {
-            _genericReposity = genericReposity;
+            _transactionReposity = transactionReposity;
             _DTOFactory = DTOFactory;
         }
+
+        [Route("addtransaction")]
+        [HttpPost]
+        public ActionResult<bool> AddTransaction([FromBody]DTOAddTransaction transaction)
+        {
+            //Converter o dto em entidade
+            TransactionEntity transactionEntity = _DTOFactory.CreateTransaction(transaction);
+                
+            //Chamar o repositório para adicionar
+            _transactionReposity.Add(transactionEntity);
+            _transactionReposity.Save();
+
+            return true;
+        }
+
+
+
+
+
+
 
         ////GetTransaction
         //[HttpGet]
@@ -52,4 +74,5 @@ namespace ApiBanco.Controllers
 
     }
 }
+
 

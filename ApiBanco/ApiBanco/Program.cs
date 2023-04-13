@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using User.Data;
 using User.Data.Factory;
 using User.Data.Interface;
 using User.Data.Repository;
@@ -15,10 +18,19 @@ builder.Services.AddSwaggerGen();
 
 
 //add repo global escop
-builder.Services.AddScoped<IGenericRepository, GenericRepository>();
-builder.Services.AddScoped<IGenericRepository, GenericRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IDTOFactory, DTOFactory>();
+builder.Services.AddDbContext<ApiBancoContext>(opts =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("Default");
+    var migrationsAssembly = typeof(ApiBancoContext).Assembly.GetName().Name;
 
+    opts.UseSqlServer(connectionString, sqlOptions =>
+    {
+        sqlOptions.MigrationsAssembly(migrationsAssembly);
+        sqlOptions.EnableRetryOnFailure(3, TimeSpan.FromSeconds(15), null);
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

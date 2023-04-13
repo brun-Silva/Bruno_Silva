@@ -7,15 +7,23 @@ using User.Data.Models;
 
 namespace User.Data.DTOs
 {
-    public class DTOTransaction
+
+    public class DTOTransaction : DTOBase
     {
-        public int Id { get; set; }
         public decimal Value { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public TransactionType? Type { get; set; }
-        public DateTime DateTransaction { get; set; }
         public string Attachment { get; set; }
-        public string fkUserID { get; set; }
+    }
+
+    public class DTOAddTransaction
+    {
+        public string? userId { get; set; }
+        public decimal Value { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public TransactionType? Type { get; set; }
+        public string Attachment { get; set; }
     }
 }

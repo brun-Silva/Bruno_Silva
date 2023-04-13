@@ -1,40 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using User.Data.Entityes;
 using User.Data.Interface;
-using User.Data.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace User.Data.Repository
 {
-    public class GenericRepository : IGenericRepository
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity>
+        where TEntity : EntityBase
     {
+        private readonly ApiBancoContext _dbContext;
+        protected DbSet<TEntity> Entities  { get; init; }
 
-
-        public enum TimeFrame
-        {
-            Weekly = 0,
-            Monthly = 1,
-            Anualy = 2,
+        public GenericRepository(ApiBancoContext dbcontext)
+        { _dbContext = dbcontext; 
+          Entities = _dbContext.Set<TEntity>();
         }
 
 
+        public IQueryable<TEntity> PrepareQuery() =>
+            Entities.AsQueryable();
 
-        List<TransactionEntity> lisTransact = new List<TransactionEntity>
+        public TEntity FindById(int id)
+            => PrepareQuery().SingleOrDefault(x => x.Id == id);
+
+        public TEntity FindByUserId(string userId)
+            => PrepareQuery().SingleOrDefault(x => x.userId == userId);
+
+        public List<TEntity> FindByUserIdAndTimeframe(string userId, TimeFrame timeframe)
         {
-            new TransactionEntity{id = 0, Value=100,Title="Transfe 0",Description = "test", Type = TransactionType.Income , DateTransaction = new DateTime(2023, 01, 04), Attachment = "", fkUserID= "bruno@" },
-            new TransactionEntity{id = 1, Value=250,Title="Transf 1",Description = "test1", Type = TransactionType.Income, DateTransaction = new DateTime(2023, 04, 01), Attachment = "", fkUserID= "bruno@" },
-            new TransactionEntity{id = 2, Value=100,Title="Transf 2",Description = "test2", Type = TransactionType.Income, DateTransaction = new DateTime(2023, 04, 09), Attachment = "", fkUserID= "bruno@" },
-            new TransactionEntity{id = 3, Value=2550,Title="Transf 3",Description = "test3", Type = TransactionType.Expense, DateTransaction = new DateTime(2023,04,10), Attachment = "", fkUserID= "bruno@" },
-        };
+            //TODO: Filter by range of dates and time frames
 
-        List<AccountEntity> lisUsers = new List<AccountEntity>
-        {
-            new AccountEntity{id= 0, UserId="bruno@",Balance=0.0m,FirstName ="Bruno",LastName="Silva",Incomes=0.0m,Expense=.0m}
 
-        };
+            return PrepareQuery().Where(i => i.userId == userId).ToList();
+        }
 
+
+        public void Add(TEntity entity) =>
+            Entities.Add(entity);
+
+        public void Delete(TEntity entity) =>
+            Entities.Remove(entity);
+
+        public int Save()
+            => _dbContext.SaveChanges();
 
         //getTransac
         //public TransactionEntity GetTransactionByID(int id)
@@ -61,12 +69,7 @@ namespace User.Data.Repository
         //    transaction.DateTransaction = (newDataTime == null) ? transaction.DateTransaction : newDataTime;  
         //    transaction.Description = (newDescription == null) ? transaction.Description : newDescription; 
         //    transaction.Title = (newTitle == null) ? transaction.Title : newTitle;  
-
-
         //    //ternario para bypass em exeçoes nullas e permitir modificar apenas os campos que o utilizador quer
-        //    //ternario não esta funcionando
-
-
         //    return transaction;
         //}
 
@@ -92,26 +95,6 @@ namespace User.Data.Repository
 
 
         //Func to search user in the list "lisUsers"
-        public AccountEntity GetUserByID( string? UserId)
-        {   
-
-                return lisUsers.FirstOrDefault(x => x.UserId == UserId);
-           
-        }
-
-        public List<TransactionEntity> GetTransactionByUserIdAndTimeFrame(string userId, TimeFrame timeframe)
-        {
-            //TODO: Filter by range of dates and time frames
-
-
-            return lisTransact.Where(i => i.fkUserID == userId).ToList();
-        }
-
-   
-
-
-
-
 
         //public Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense)
         //{
@@ -119,9 +102,7 @@ namespace User.Data.Repository
         //    return user;
         //}
 
+
     }
-
-
-
 }
 

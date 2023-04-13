@@ -16,12 +16,13 @@ namespace ApiBanco.Controllers
     public class TransactionController : Controller
     {
         private readonly IGenericRepository<TransactionEntity> _transactionReposity;
+        private readonly IGenericRepository<AccountEntity> _accountRepository;
         private readonly IDTOFactory _DTOFactory;
-        public TransactionController(IGenericRepository<TransactionEntity> transactionReposity, IDTOFactory DTOFactory)
+        public TransactionController(IGenericRepository<TransactionEntity> transactionReposity, IDTOFactory DTOFactory, IGenericRepository<AccountEntity> accountRepository)
         {
             _transactionReposity = transactionReposity;
             _DTOFactory = DTOFactory;
-
+            _accountRepository = accountRepository;
         }
 
 
@@ -62,22 +63,39 @@ namespace ApiBanco.Controllers
         //DELET TRANSACTION 
         [Route("deltransactionbyuidid")]
         [HttpDelete]
-        public bool DelTransactionbyUidID(string uid, int id)
+        public bool DelTransactionbyId( int id)
+
         {
+            var transact = _transactionReposity.FindById(id);
+            var value = transact.Value;
+            var uid = transact.userId;
+            var boo = false;
             try
             {
-                var transacts = _transactionReposity.FindAListByUserId(uid);
-                var reponse = transacts.Find(r => r.Id == id);
-                _transactionReposity.Delete(reponse);
-
+                _transactionReposity.Delete(transact);
                 _transactionReposity.Save();
-                return true;
+                 boo = true;
             }
             catch (Exception ex)
             {
-                return false;
+                 boo = false;
+            }
+            var user = _accountRepository.FindByUserId(uid);
+
+            if (boo == true && transact.Type == TransactionType.Expense)
+            {
+                user.Balance += value;
+                user.Expense -= value;
+            }
+            else if (boo == true && transact.Type == TransactionType.Income)
+            {
+
+                user.Balance -= value;
+                user.Incomes -= value;
             }
 
+            _accountRepository.Save();
+            return boo;
         }
 
 

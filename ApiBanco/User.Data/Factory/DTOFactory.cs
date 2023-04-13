@@ -79,12 +79,11 @@ namespace User.Data.Factory
             return transactionbytype;
 
         }
-
         //getDashboard
         public DTODashboard GetDashboardDTO(AccountEntity account, List<TransactionEntity> lisTrans)
         {
-            var timeFrameTransactionsDto = lisTrans.Select( t => new DTOTransaction() 
-            { 
+            var timeFrameTransactionsDto = lisTrans.Select(t => new DTOTransaction()
+            {
                 Id = t.Id,
                 userId = t.userId,
                 Title = t.Title,
@@ -95,7 +94,7 @@ namespace User.Data.Factory
                 Value = (decimal)t.Value,
 
             }).ToList();
-            
+
             var lastTransactions = lisTrans.OrderByDescending(t => t.Created).Take(3).Select(t => new DTOTransaction()
             {
                 Id = t.Id,
@@ -106,11 +105,11 @@ namespace User.Data.Factory
                 Description = t.Description,
                 Type = t.Type,
                 Value = (decimal)t.Value
-                
+
             }).ToList();
 
-            
-            return  new DTODashboard()
+
+            return new DTODashboard()
             {
 
                 income = account.Incomes,
@@ -141,20 +140,8 @@ namespace User.Data.Factory
             };
 
             var user = _accountRepository.FindByUserId(transaction.userId);
-            
-            if (user != null )
-            {
 
-                if (transaction.Type == TransactionType.Expense)
-                {
-                    user.Expense += transaction.Value;
-                }
-                else if (transaction.Type == TransactionType.Income)
-                {
-                    user.Incomes += transaction.Value;
-                }
-            }
-            else
+            if (user == null)
             {
                 user = new AccountEntity()
                 {
@@ -168,20 +155,26 @@ namespace User.Data.Factory
 
                 _accountRepository.Add(user);
                 _accountRepository.Save();
-
-                if (transaction.Type == TransactionType.Expense)
-                {
-                    user.Expense += transaction.Value;
-                }
-                else if (transaction.Type == TransactionType.Income)
-                {
-                    user.Incomes += transaction.Value;
-                }
-
             }
 
+            if (transaction.Type == TransactionType.Expense)
+            {
+                user.Expense += transaction.Value;
+                user.Balance -= transaction.Value;
 
-            
+            }
+            else if (transaction.Type == TransactionType.Income)
+            {
+                user.Incomes += transaction.Value;
+                user.Balance += transaction.Value;
+            }
+
+            if (user.Balance < 0.0M)
+            {
+                user.Balance = 0.0M;
+            }
+
+            _accountRepository.Save();
 
             return transaction;
         }

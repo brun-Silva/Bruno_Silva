@@ -25,9 +25,16 @@ namespace User.Data.Factory
     {
         private readonly IDTOFactory _DTOFactory;
         private readonly IGenericRepository<TransactionEntity> _transactionRepository;
+        private  IGenericRepository<AccountEntity> _accountRepository;
+
+        public DTOFactory(IGenericRepository<AccountEntity> AccountRepository)
+        {
+            _accountRepository = AccountRepository;
+
+        }
 
 
-
+        //get transaction by type
         public List<DTOTransaction> GetIncomesExpensesOrAll(List<TransactionEntity> alltransactions, TransactionType transactionType)
         {
             List<DTOTransaction> transactionbytype = new List<DTOTransaction>();
@@ -73,9 +80,7 @@ namespace User.Data.Factory
 
         }
 
-
-
-
+        //getDashboard
         public DTODashboard GetDashboardDTO(AccountEntity account, List<TransactionEntity> lisTrans)
         {
             var timeFrameTransactionsDto = lisTrans.Select( t => new DTOTransaction() 
@@ -121,11 +126,9 @@ namespace User.Data.Factory
         }
 
 
-
-
+        //create transaction
         public TransactionEntity CreateTransaction(DTOAddTransaction dtoTransaction)
-        { 
-
+        {
             var transaction = new TransactionEntity()
             {
                 userId = dtoTransaction.userId,
@@ -136,9 +139,54 @@ namespace User.Data.Factory
                 Attachment = dtoTransaction.Attachment,
 
             };
+
+            var user = _accountRepository.FindByUserId(transaction.userId);
+            
+            if (user != null )
+            {
+
+                if (transaction.Type == TransactionType.Expense)
+                {
+                    user.Expense += transaction.Value;
+                }
+                else if (transaction.Type == TransactionType.Income)
+                {
+                    user.Incomes += transaction.Value;
+                }
+            }
+            else
+            {
+                user = new AccountEntity()
+                {
+                    Balance = 0,
+                    Expense = 0,
+                    FirstName = "new",
+                    Incomes = 0,
+                    LastName = "user",
+                    userId = transaction.userId,
+                };
+
+                _accountRepository.Add(user);
+                _accountRepository.Save();
+
+                if (transaction.Type == TransactionType.Expense)
+                {
+                    user.Expense += transaction.Value;
+                }
+                else if (transaction.Type == TransactionType.Income)
+                {
+                    user.Incomes += transaction.Value;
+                }
+
+            }
+
+
+            
+
             return transaction;
         }
 
+        //del transaction
 
     }
 }

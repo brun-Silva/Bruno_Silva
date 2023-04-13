@@ -37,7 +37,6 @@ namespace ApiBanco.Controllers
             var account = _AccountRepo.FindByUserId(userId);
             var transaction = _TransactionRepo.FindByUserIdAndTimeframe(userId, timeFrame);
 
-
             return _dtoFactory.GetDashboardDTO(account, transaction);
         }
 

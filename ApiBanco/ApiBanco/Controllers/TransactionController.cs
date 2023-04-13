@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using User.Data.DTOs;
 using User.Data.Entityes;
@@ -20,27 +21,35 @@ namespace ApiBanco.Controllers
         {
             _transactionReposity = transactionReposity;
             _DTOFactory = DTOFactory;
+
         }
 
+
+
+        //add transaction
         [Route("addtransaction")]
         [HttpPost]
         public ActionResult<bool> AddTransaction([FromBody]DTOAddTransaction transaction)
         {
             //Converter o dto em entidade
             TransactionEntity transactionEntity = _DTOFactory.CreateTransaction(transaction);
-                
+            
             //Chamar o repositório para adicionar
             _transactionReposity.Add(transactionEntity);
             _transactionReposity.Save();
 
+
             return true;
         }
 
+
+
+        //gettransaction
         [Route("gettransactionbytype/{uid}/{transactiontype}")]
         [HttpGet]
         public List<DTOTransaction> GetTransactionByTypeOrAll( string uid, TransactionType transactiontype) 
         {
-            //GetIncomesExpensesOrAll
+            //Get Incomes Expenses Or All
 
             List<TransactionEntity> transactionsbytype = new List<TransactionEntity>();
             transactionsbytype = _transactionReposity.FindAListByUserId(uid);
@@ -49,6 +58,27 @@ namespace ApiBanco.Controllers
 
         }
 
+
+        //DELET TRANSACTION 
+        [Route("deltransactionbyuidid")]
+        [HttpDelete]
+        public bool DelTransactionbyUidID(string uid, int id)
+        {
+            try
+            {
+                var transacts = _transactionReposity.FindAListByUserId(uid);
+                var reponse = transacts.Find(r => r.Id == id);
+                _transactionReposity.Delete(reponse);
+
+                _transactionReposity.Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
 
 
 

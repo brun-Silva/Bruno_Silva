@@ -11,6 +11,7 @@ namespace User.Data.Interface
         IQueryable<TEntity> PrepareQuery();
         TEntity FindById(int id);
         TEntity FindByUserId(string userId);
+        List<TEntity> FindAListByUserId(string userId);
         List<TEntity> FindByUserIdAndTimeframe(string userId, TimeFrame timeframe);
         void Add(TEntity entity);
         void Delete(TEntity entity);

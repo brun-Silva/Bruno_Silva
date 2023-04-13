@@ -26,12 +26,31 @@ namespace User.Data.Repository
         public TEntity FindByUserId(string userId)
             => PrepareQuery().SingleOrDefault(x => x.userId == userId);
 
+        public List<TEntity> FindAListByUserId(string userId)
+        {
+            return PrepareQuery().Where(i => i.userId == userId ).ToList();
+        }
+
         public List<TEntity> FindByUserIdAndTimeframe(string userId, TimeFrame timeframe)
         {
+            var dataInicio =  DateTime.Now;
+            var dataFim = DateTime.Now;
+            if (timeframe == TimeFrame.Weekly)
+            {
+                dataFim = dataInicio.AddDays(-7);
+            }
+            else if(timeframe == TimeFrame.Monthly)
+            {
+                dataFim = dataInicio.AddMonths(-1);
+            }
+            else
+            {
+                dataFim = dataInicio.AddYears(-1);
+            }
+
+
             //TODO: Filter by range of dates and time frames
-
-
-            return PrepareQuery().Where(i => i.userId == userId).ToList();
+            return PrepareQuery().Where(i => i.userId == userId && i.Created <= dataInicio && i.Created >= dataFim).ToList();
         }
 
 

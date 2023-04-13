@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using User.Data.DTOs;
+using User.Data.Entityes;
 using User.Data.Interface;
 using User.Data.Models;
 
@@ -17,17 +18,69 @@ namespace User.Data.Factory
     {
         DTODashboard GetDashboardDTO(AccountEntity account,List<TransactionEntity> listTrans);
         TransactionEntity CreateTransaction(DTOAddTransaction dtoTransaction);
+        List<DTOTransaction> GetIncomesExpensesOrAll(List<TransactionEntity> transactionsbytype, TransactionType transactionType);
     }
 
     public class DTOFactory : IDTOFactory
     {
         private readonly IDTOFactory _DTOFactory;
+        private readonly IGenericRepository<TransactionEntity> _transactionRepository;
+
+
+
+        public List<DTOTransaction> GetIncomesExpensesOrAll(List<TransactionEntity> alltransactions, TransactionType transactionType)
+        {
+            List<DTOTransaction> transactionbytype = new List<DTOTransaction>();
+            
+            foreach (TransactionEntity transaction in alltransactions)
+            {
+                
+                if (transaction.Type == transactionType) 
+                {
+                    transactionbytype.Add(new DTOTransaction()
+                    {
+                        Attachment = transaction.Attachment,
+                        Created = transaction.Created,
+                        Description = transaction.Description,
+                        Id = transaction.Id,
+                        Title = transaction.Title,
+                        Type = transaction.Type,
+                        Updated = transaction.Updated,
+                        userId =  transaction.userId,
+                        Value = transaction.Value,
+                    });
+
+                }
+                else if (transactionType == TransactionType.all)
+                {
+                    transactionbytype.Add(new DTOTransaction()
+                    {
+                        Attachment = transaction.Attachment,
+                        Created = transaction.Created,
+                        Description = transaction.Description,
+                        Id = transaction.Id,
+                        Title = transaction.Title,
+                        Type = transaction.Type,
+                        Updated = transaction.Updated,
+                        userId = transaction.userId,
+                        Value = transaction.Value,
+                    });
+
+
+                }
+            }
+            return transactionbytype;
+
+        }
+
+
+
 
         public DTODashboard GetDashboardDTO(AccountEntity account, List<TransactionEntity> lisTrans)
         {
             var timeFrameTransactionsDto = lisTrans.Select( t => new DTOTransaction() 
             { 
-
+                Id = t.Id,
                 userId = t.userId,
                 Title = t.Title,
                 Attachment = t.Attachment,
@@ -40,6 +93,7 @@ namespace User.Data.Factory
             
             var lastTransactions = lisTrans.OrderByDescending(t => t.Created).Take(3).Select(t => new DTOTransaction()
             {
+                Id = t.Id,
                 userId = t.userId,
                 Title = t.Title,
                 Attachment = t.Attachment,
@@ -47,10 +101,13 @@ namespace User.Data.Factory
                 Description = t.Description,
                 Type = t.Type,
                 Value = (decimal)t.Value
+                
             }).ToList();
 
-            return new DTODashboard()
+            
+            return  new DTODashboard()
             {
+
                 income = account.Incomes,
                 expense = account.Expense,
                 balance = account.Incomes - account.Expense,
@@ -81,24 +138,6 @@ namespace User.Data.Factory
             };
             return transaction;
         }
-
-
-
-
-        //public string idUser { get; set; }
-        //public string Fname { get; set; }
-        //public string Lname { get; set; }
-        //public decimal income { get; set; }
-        //public decimal expense { get; set; }
-        //public decimal balance { get; set; }
-        //public List<DTOTransaction> LastTransac { get; set; }
-        //public List<DTOTransaction> timeFrameTransaction { get; set; }
-
-
-
-
-
-
 
 
     }

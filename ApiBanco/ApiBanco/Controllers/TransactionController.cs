@@ -36,8 +36,18 @@ namespace ApiBanco.Controllers
             return true;
         }
 
+        [Route("gettransactionbytype/{uid}/{transactiontype}")]
+        [HttpGet]
+        public List<DTOTransaction> GetTransactionByTypeOrAll( string uid, TransactionType transactiontype) 
+        {
+            //GetIncomesExpensesOrAll
 
+            List<TransactionEntity> transactionsbytype = new List<TransactionEntity>();
+            transactionsbytype = _transactionReposity.FindAListByUserId(uid);
+            
+            return _DTOFactory.GetIncomesExpensesOrAll(transactionsbytype, transactiontype);
 
+        }
 
 
 

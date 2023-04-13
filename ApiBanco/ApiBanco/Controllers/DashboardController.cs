@@ -22,11 +22,11 @@ namespace ApiBanco.Controllers
         private readonly IGenericRepository<TransactionEntity> _TransactionRepo;
         private readonly IDTOFactory _dtoFactory;
         
-        public DashboardController(IGenericRepository<AccountEntity> AccountRepository, IGenericRepository<TransactionEntity> TransactionRepository) 
+        public DashboardController(IGenericRepository<AccountEntity> AccountRepository, IGenericRepository<TransactionEntity> TransactionRepository, IDTOFactory DTOFac) 
         { 
            _AccountRepo = AccountRepository;
            _TransactionRepo = TransactionRepository;
-
+            _dtoFactory = DTOFac;
 
         }
 
@@ -37,9 +37,8 @@ namespace ApiBanco.Controllers
             var account = _AccountRepo.FindByUserId(userId);
             var transaction = _TransactionRepo.FindByUserIdAndTimeframe(userId, timeFrame);
 
-            var DTODash = _dtoFactory.GetDashboardDTO(account, transaction);
 
-            return DTODash;
+            return _dtoFactory.GetDashboardDTO(account, transaction);
         }
 
 

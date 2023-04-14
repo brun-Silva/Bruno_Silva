@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiBanco.Bussines\ApiBanco.Bussines.csproj" />
     <ProjectReference Include="..\User.Data\User.Data.csproj" />
   </ItemGroup>
 

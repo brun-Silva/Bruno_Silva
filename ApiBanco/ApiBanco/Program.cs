@@ -1,3 +1,4 @@
+using ApiBanco.Bussines.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using User.Data;
@@ -20,6 +21,8 @@ builder.Services.AddSwaggerGen();
 //add repo global escop
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IDTOFactory, DTOFactory>();
+
+
 builder.Services.AddDbContext<ApiBancoContext>(opts =>
 {
     var connectionString = builder.Configuration.GetConnectionString("Default");
@@ -31,6 +34,8 @@ builder.Services.AddDbContext<ApiBancoContext>(opts =>
         sqlOptions.EnableRetryOnFailure(3, TimeSpan.FromSeconds(15), null);
     });
 });
+
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -19,6 +19,7 @@ namespace User.Data.Factory
         DTODashboard GetDashboardDTO(AccountEntity account,List<TransactionEntity> listTrans);
         TransactionEntity CreateTransaction(DTOAddTransaction dtoTransaction);
         List<DTOTransaction> GetIncomesExpensesOrAll(List<TransactionEntity> transactionsbytype, TransactionType transactionType);
+        DTOTransaction GetTransactionDTO(TransactionEntity transactionToDTO);
     }
 
     public class DTOFactory : IDTOFactory
@@ -168,6 +169,23 @@ namespace User.Data.Factory
             _accountRepository.Update(user);
             _accountRepository.Save();
             return transaction;
+        }
+
+        public DTOTransaction GetTransactionDTO(TransactionEntity transactionToDTO)
+        {
+
+            return new DTOTransaction()
+            {
+                Attachment = transactionToDTO.Attachment,
+                Created = transactionToDTO.Created,
+                Description = transactionToDTO.Description,
+                Id = transactionToDTO.Id,
+                Title = transactionToDTO.Title,
+                Type = transactionToDTO.Type,
+                Updated = transactionToDTO.Updated,
+                userId = transactionToDTO.userId,
+                Value = transactionToDTO.Value,
+            };
         }
     }
 }

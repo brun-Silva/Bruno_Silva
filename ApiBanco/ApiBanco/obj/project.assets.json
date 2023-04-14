@@ -2548,6 +2548,19 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "ApiBanco.Bussines/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "User.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ApiBanco.Bussines.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ApiBanco.Bussines.dll": {}
+        }
+      },
       "User.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -8041,6 +8054,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "ApiBanco.Bussines/1.0.0": {
+      "type": "project",
+      "path": "../ApiBanco.Bussines/ApiBanco.Bussines.csproj",
+      "msbuildProject": "../ApiBanco.Bussines/ApiBanco.Bussines.csproj"
+    },
     "User.Data/1.0.0": {
       "type": "project",
       "path": "../User.Data/User.Data.csproj",
@@ -8049,6 +8067,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ApiBanco.Bussines >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
@@ -8090,6 +8109,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\ApiBanco.Bussines\\ApiBanco.Bussines.csproj": {
+              "projectPath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\ApiBanco.Bussines\\ApiBanco.Bussines.csproj"
+            },
             "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj": {
               "projectPath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\User.Data\\User.Data.csproj"
             }

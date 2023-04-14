@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "ApiBanco/1.0.0": {
         "dependencies": {
+          "ApiBanco.Bussines": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.Design": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4",
@@ -1488,6 +1489,14 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "ApiBanco.Bussines/1.0.0": {
+        "dependencies": {
+          "User.Data": "1.0.0"
+        },
+        "runtime": {
+          "ApiBanco.Bussines.dll": {}
+        }
+      },
       "User.Data/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
@@ -2529,6 +2538,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "ApiBanco.Bussines/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "User.Data/1.0.0": {
       "type": "project",

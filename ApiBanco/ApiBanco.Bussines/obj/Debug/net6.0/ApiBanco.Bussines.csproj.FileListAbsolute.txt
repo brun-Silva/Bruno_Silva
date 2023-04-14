@@ -1,0 +1,17 @@
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.csproj.AssemblyReference.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.AssemblyInfoInputs.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.AssemblyInfo.cs
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.csproj.CoreCompileInputs.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\ApiBanco.Bussines.deps.json
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\ApiBanco.Bussines.runtimeconfig.json
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\ApiBanco.Bussines.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\ApiBanco.Bussines.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\User.Data.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\bin\Debug\net6.0\User.Data.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.csproj.CopyComplete
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\refint\ApiBanco.Bussines.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ApiBanco.Bussines.genruntimeconfig.cache
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco.Bussines\obj\Debug\net6.0\ref\ApiBanco.Bussines.dll

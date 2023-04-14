@@ -26,4 +26,13 @@ namespace User.Data.DTOs
         public TransactionType? Type { get; set; }
         public string Attachment { get; set; }
     }
+
+    public class DTOEditTransaction : DTOBase
+    {
+
+        public decimal Value { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Attachment { get; set; }
+    }
 }

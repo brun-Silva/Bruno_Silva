@@ -17,8 +17,7 @@ namespace User.Data.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public decimal Balance { get; set; }
-        public decimal Incomes { get; set; }
+        public decimal Income { get; set; }
         public decimal Expense { get; set; }
     }
     public class AccountTypeConfiguration : EntityTypeConfigurationBase<AccountEntity>
@@ -37,9 +36,8 @@ namespace User.Data.Models
             builder.Property(x => x.LastName)
                 .HasMaxLength (50)
                 .IsRequired();
-            builder.Property(x => x.Balance);
 
-            builder.Property(x => x.Incomes);
+            builder.Property(x => x.Income);
             builder.Property (x => x.Expense);
         }
     }

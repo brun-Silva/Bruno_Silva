@@ -89,6 +89,7 @@ namespace User.Data.Factory
                 Title = t.Title,
                 Attachment = t.Attachment,
                 Created = t.Created,
+                Updated = t.Updated,
                 Description = t.Description,
                 Type = t.Type,
                 Value = (decimal)t.Value,
@@ -102,6 +103,7 @@ namespace User.Data.Factory
                 Title = t.Title,
                 Attachment = t.Attachment,
                 Created = t.Created,
+                Updated = t.Updated,
                 Description = t.Description,
                 Type = t.Type,
                 Value = (decimal)t.Value
@@ -112,9 +114,9 @@ namespace User.Data.Factory
             return new DTODashboard()
             {
 
-                income = account.Incomes,
+                income = account.Income,
                 expense = account.Expense,
-                balance = account.Incomes - account.Expense,
+                balance = account.Income - account.Expense,
                 Fname = account.FirstName,
                 Lname = account.LastName,
                 idUser = account.userId,
@@ -123,8 +125,6 @@ namespace User.Data.Factory
 
             };
         }
-
-
         //create transaction
         public TransactionEntity CreateTransaction(DTOAddTransaction dtoTransaction)
         {
@@ -145,10 +145,10 @@ namespace User.Data.Factory
             {
                 user = new AccountEntity()
                 {
-                    Balance = 0,
+
                     Expense = 0,
                     FirstName = "new",
-                    Incomes = 0,
+                    Income = 0,
                     LastName = "user",
                     userId = transaction.userId,
                 };
@@ -160,26 +160,14 @@ namespace User.Data.Factory
             if (transaction.Type == TransactionType.Expense)
             {
                 user.Expense += transaction.Value;
-                user.Balance -= transaction.Value;
-
             }
             else if (transaction.Type == TransactionType.Income)
             {
-                user.Incomes += transaction.Value;
-                user.Balance += transaction.Value;
+                user.Income += transaction.Value;
             }
-
-            if (user.Balance < 0.0M)
-            {
-                user.Balance = 0.0M;
-            }
-
+            _accountRepository.Update(user);
             _accountRepository.Save();
-
             return transaction;
         }
-
-        //del transaction
-
     }
 }

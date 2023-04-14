@@ -15,6 +15,7 @@ namespace User.Data.Interface
         List<TEntity> FindByUserIdAndTimeframe(string userId, TimeFrame timeframe);
         void Add(TEntity entity);
         void Delete(TEntity entity);
+        void Update(TEntity entity);
         int Save();
 
         //Users UpdateUserByID(string id, decimal balance, decimal income, decimal expense);

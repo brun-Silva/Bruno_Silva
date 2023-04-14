@@ -25,8 +25,6 @@ namespace ApiBanco.Controllers
             _accountRepository = accountRepository;
         }
 
-
-
         //add transaction
         [Route("addtransaction")]
         [HttpPost]
@@ -38,12 +36,8 @@ namespace ApiBanco.Controllers
             //Chamar o repositório para adicionar
             _transactionReposity.Add(transactionEntity);
             _transactionReposity.Save();
-
-
             return true;
         }
-
-
 
         //gettransaction
         [Route("gettransactionbytype/{uid}/{transactiontype}")]
@@ -61,9 +55,9 @@ namespace ApiBanco.Controllers
 
 
         //DELET TRANSACTION 
-        [Route("deltransactionbyuidid")]
+        [Route("deletetransactionbyid")]
         [HttpDelete]
-        public bool DelTransactionbyId( int id)
+        public bool DeleteTransactionbyId( int id)
 
         {
             var transact = _transactionReposity.FindById(id);
@@ -84,51 +78,85 @@ namespace ApiBanco.Controllers
 
             if (boo == true && transact.Type == TransactionType.Expense)
             {
-                user.Balance += value;
+
                 user.Expense -= value;
             }
             else if (boo == true && transact.Type == TransactionType.Income)
             {
-
-                user.Balance -= value;
-                user.Incomes -= value;
+                user.Income -= value;
             }
-
+            _accountRepository.Update(user);
             _accountRepository.Save();
+
             return boo;
         }
 
+        //Update transaction
+        [HttpPut]
+        [Route("updatetransactionbyid")]
+        public bool UpdateTransactionById( DTOEditTransaction transactDTO)
+        {
+            var transactEntity = _transactionReposity.FindById(transactDTO.Id);
+            var boo = false;
+            var user = _accountRepository.FindByUserId(transactEntity.userId);
+            if (transactEntity != null)
+            {
+                //atualizando um income, (RECEBENDO $$)
+                if (transactEntity.Type == TransactionType.Income) 
+                {
+                    //se o valor for igual, ignora, se for diferente segue
+                    if (transactEntity.Value != transactDTO.Value)
+                    { 
+                        //Checar se o valor novo é menor que o antigo
+                        if (transactDTO.Value < transactEntity.Value) 
+                        { 
+                            var diferenca = transactEntity.Value - transactDTO.Value;
+                            user.Income -= diferenca;
+                        }
+                        //Checar se o valor novo é meaior que o antigo
+                        else if (transactDTO.Value > transactEntity.Value)
+                        {
+                            var diferenca = transactDTO.Value - transactEntity.Value;
+                            user.Income += diferenca;
+                        }
+
+                    }
+                }
+                //Atualizando ecspense $$
+                else 
+                {
+                    //se o valor for igual, ignora, se for diferente segue
+                    if (transactEntity.Value != transactDTO.Value)
+                    {
+                        //Checar se o valor novo é menor que o antigo
+                        if (transactDTO.Value < transactEntity.Value)
+                        {
+                            var diferenca = transactEntity.Value - transactDTO.Value;
+                            user.Expense -= diferenca;
+                        }
+                        //Checar se o valor novo é meaior que o antigo
+                        else
+                        {
+                            var diferenca = transactDTO.Value - transactEntity.Value;
+                            user.Expense += diferenca;
+                        }
+
+                    }
+                }
+                transactEntity.Description = transactDTO.Description;
+                transactEntity.Value = transactDTO.Value;
+                transactEntity.Title = transactDTO.Title;
+                
+            }
 
 
-        ////GetTransaction
-        //[HttpGet]
-        //[Route("GetTransactionByID")]
-        //public ActionResult<TransactionEntity> GetTransactionByID(int Id)
-        //{
-        //    return _genericReposity.GetTransactionByID(Id);
-        //}
-        ////delet transaction
-        //[HttpDelete]
-        //[Route("DeleteTransactionByID")]
-        //public ActionResult<TransactionEntity> DeleteTransactionByID(int Id) { 
-        //    return _genericReposity.DeleteTransactionByID(Id);
-        //}
+            _transactionReposity.Update(transactEntity);
+            _accountRepository.Update(user);
+            _transactionReposity.Save();
+            _accountRepository.Save();
 
-        ////update transaction by transaction ID
-        //[HttpPut]
-        //[Route("UpdateTransactionByID")]
-        //public ActionResult<TransactionEntity> UpdateTransactionByID(int idTransaction, decimal newValue, string newDescription, string newTitle, TransactionType? newType, DateTime newDataTime)
-        //{
-        //    _genericReposity.UpdateTransactionByID(idTransaction,newValue,newDescription,newTitle,newType=(newType == null) ? TransactionType.Income : newType ,newDataTime);
-        //    return _genericReposity.GetTransactionByID(idTransaction);
-        //}
-
-        //[HttpGet]
-        //[Route("GetTransactionsByType")]
-        //public List<TransactionEntity> GetTransactTypeByUserId(string userId, TransactionType type)
-        //{
-        //    return _genericReposity.GetTransactTypeByUserId(userId,type);
-        //}
+            return true;
+        }
 
     }
 }

@@ -15,7 +15,7 @@ namespace User.Data.DTOs
         public string Lname { get; set; }
         public decimal income { get; set; }
         public decimal expense { get; set; }
-        public decimal balance { get; set; }
+        public decimal balance  { get; set; }
         public List<DTOTransaction> LastTransac { get; set; }
         public List<DTOTransaction> timeFrameTransaction { get; set; }
 

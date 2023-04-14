@@ -21,14 +21,14 @@ namespace User.Data.Repository
             Entities.AsQueryable();
 
         public TEntity FindById(int id)
-            => PrepareQuery().SingleOrDefault(x => x.Id == id);
+            => PrepareQuery().AsNoTracking().SingleOrDefault(x => x.Id == id);
 
         public TEntity FindByUserId(string userId)
-            => PrepareQuery().SingleOrDefault(x => x.userId == userId);
+            => PrepareQuery().AsNoTracking().SingleOrDefault(x => x.userId == userId);
 
         public List<TEntity> FindAListByUserId(string userId)
         {
-            return PrepareQuery().Where(i => i.userId == userId ).ToList();
+            return PrepareQuery().AsNoTracking().Where(i => i.userId == userId ).ToList();
         }
 
         public List<TEntity> FindByUserIdAndTimeframe(string userId, TimeFrame timeframe)
@@ -50,7 +50,7 @@ namespace User.Data.Repository
 
 
             //TODO: Filter by range of dates and time frames
-            return PrepareQuery().Where(i => i.userId == userId && i.Created <= dataInicio && i.Created >= dataFim).ToList();
+            return PrepareQuery().AsNoTracking().Where(i => i.userId == userId && i.Created <= dataInicio && i.Created >= dataFim).ToList();
         }
 
 
@@ -62,6 +62,8 @@ namespace User.Data.Repository
 
         public int Save()
             => _dbContext.SaveChanges();
+        public void Update(TEntity entity) =>
+            Entities.Update(entity);
 
         //getTransac
         //public TransactionEntity GetTransactionByID(int id)

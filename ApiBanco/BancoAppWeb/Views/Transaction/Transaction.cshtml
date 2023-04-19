@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Transactions";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<bodyA>
+    <div class="sidebarA">
+        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <a href="@Url.Action("Index", "Transaction")">Transactions</a>
+        <a href="@Url.Action("AddIncome", "Transaction")">Add Income</a>
+        <a href="@Url.Action("AddExpense", "Transaction")">Add Expense</a>
+    </div>
+    <div class="contentA">
+        <h1>Transactions</h1>
+        <div class="filter-buttonsA">
+            <button class="income-buttonA">Income</button>
+            <button class="expense-buttonA">Expense</button>
+        </div>
+        <ul class="transactions-listA">
+            <li class="list-headerA">
+                <span class="dateA">Data</span>
+                <span class="descriptionA">Descrição</span>
+                <span class="valueA">Valor</span>
+                <span class="actionA">Ação</span>
+            </li>
+            <li>
+                <span class="dateA">10/04/2023</span>
+                <span class="descriptionA">Compras no mercado</span>
+                <span class="valueA expense">- R$ 150,00</span>
+                <span class="actionA">
+                    <span class="downloadA">download</span>
+                    <a class="editA" href="@Url.Action("EditTransaction", "Transaction")">Edit</a>
+                    <span class="removeA">remove</span>
+                </span>
+            </li>
+            <li>
+                <span class="dateA">05/04/2023</span>
+                <span class="descriptionA">Salário</span>
+                <span class="valueA income">+ R$ 2.500,00</span>
+                <span class="actionA">
+                    <span class="downloadA">download</span>
+                    <span class="editA">edit</span>
+                    <span class="removeA">remove</span>
+                </span>
+            </li>
+            <!-- mais itens da lista aqui... -->
+        </ul>
+    </div>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</bodyA>
+</html>

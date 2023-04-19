@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -110,21 +111,42 @@ namespace User.Data.Factory
                 Value = (decimal)t.Value
 
             }).ToList();
+            var dtoreturn = new DTODashboard();
+            if(account == null) { 
+                 dtoreturn = new DTODashboard()
+                {
 
+                    income =  0.0m,
+                    expense =  0.0m,
+                    balance = 0.0m,
+                    Fname =  "empty" ,
+                    Lname =  "empty",
+                    idUser = "empty",
+                    LastTransac =  new List<DTOTransaction>(),
+                    timeFrameTransaction = new List<DTOTransaction>()
 
-            return new DTODashboard()
+                };
+            }
+            else
             {
+                dtoreturn = new DTODashboard()
+                {
 
-                income = account.Income,
-                expense = account.Expense,
-                balance = account.Income - account.Expense,
-                Fname = account.FirstName,
-                Lname = account.LastName,
-                idUser = account.userId,
-                LastTransac = lastTransactions,
-                timeFrameTransaction = timeFrameTransactionsDto
+                    income = account.Income,
+                    expense = account.Expense,
+                    balance = account.Income - account.Expense,
+                    Fname = account.FirstName,
+                    Lname = account.LastName,
+                    idUser = account.userId,
+                    LastTransac = lastTransactions,
+                    timeFrameTransaction = timeFrameTransactionsDto
 
-            };
+                };
+            }
+
+
+            
+            return dtoreturn;
         }
         //create transaction
         public TransactionEntity CreateTransaction(DTOAddTransaction dtoTransaction)

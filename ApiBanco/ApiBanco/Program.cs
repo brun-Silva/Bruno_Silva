@@ -21,7 +21,8 @@ builder.Services.AddSwaggerGen();
 //add repo global escop
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IDTOFactory, DTOFactory>();
-
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 builder.Services.AddDbContext<ApiBancoContext>(opts =>
 {
@@ -35,7 +36,8 @@ builder.Services.AddDbContext<ApiBancoContext>(opts =>
     });
 });
 
-builder.Services.AddScoped<IDashboardService, DashboardService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

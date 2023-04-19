@@ -1,0 +1,66 @@
+﻿@using BancoAppWeb.Models.ViewModel;
+@{
+    @model ViewModelDashboard;
+    ViewData["Title"] = "Dashboard";
+    var mytransactions = @Model.LastTransac;
+
+}
+
+
+<!DOCTYPE htmlA>
+<html>
+
+
+<body>
+
+    <div class="sidebar">
+        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <a href="@Url.Action("Index", "Transaction")">Transactions</a>
+        <a href="@Url.Action("AddIncome", "Transaction")">Add Income</a>
+        <a href="@Url.Action("AddExpense", "Transaction")">Add Expense</a>
+
+    </div>
+    <div class="content">
+        <h1>Dashboard</h1>
+        <h1>User Name:@Model.Fname @Model.Lname</h1>
+
+        <div class="box green">
+            <p>Incomes</p>
+            <p>€@Model.income</p>
+        </div>
+        <div class="box red">
+            <p>Expense</p>
+            <p>€@Model.expense</p>
+        </div>
+        <div class="box black">
+            <p>Balance</p>
+            <p>€@Model.balance</p>
+        </div>
+        <div class="transaction-listDash">
+            <div class="transaction-header">
+                <p class="dateA">Date</p>
+                <p class="descriptionA">Description</p>
+                <p class="valueA">Value</p>
+                <p class="actionA">Action</p>
+            </div>
+            <ul class="transaction-items">
+                @foreach(var transacti in @mytransactions)
+                {
+                <li class="transaction-item">
+                    <p class="dateA">@transacti.Created</p>
+                    <p class="descriptionA">@transacti.Description</p>
+                    <p class="valueA">@transacti.Value</p>
+                    <p class="actionA">
+                        <a href="#">Download</a>
+                        <a href="@Url.Action("EditTransaction", "Transaction",transacti.Id)" >Edit</a>
+                            @Html.ActionLink("Remove transaction", "RemoveTransaction", "Dashboard", new { Id = transacti.Id },
+                        new { onclick = "return confirm('Are sure wants to delete?');" })          
+                    </p>
+                </li>
+                }
+                <!-- adicione mais itens de transação aqui -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

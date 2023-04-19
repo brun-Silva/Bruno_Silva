@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "AddExpense";
+}
+
+
+<!DOCTYPE htmlA>
+<html>
+
+<body>
+    <div class="sidebar">
+        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <a href="@Url.Action("Index", "Transaction")">Transactions</a>
+        <a href="@Url.Action("AddIncome", "Transaction")">Add Income</a>
+        <a href="@Url.Action("AddExpense", "Transaction")">Add Expense</a>
+        <a href="@Url.Action("EditTransaction", "Transaction")">Edit Transaction</a>
+    </div>
+    <div class="content">
+
+        <form class="add-expense-form" method="POST" action="/expense">
+            <div class="add-expense-container">
+                <h1 class="add-expense-title">expense</h1>
+                <div class="add-expense-form">
+                    <div class="add-expense-form-item">
+                        <label for="value" class="add-expense-form-label">Value</label>
+                        <input type="text" id="value" name="value" class="add-expense-form-input" placeholder="€ xx">
+                    </div>
+                    <div class="add-expense-form-item">
+                        <label for="date" class="add-expense-form-label">Date</label>
+                        <input type="text" id="date" name="date" class="add-expense-form-input" placeholder="31/12/2023">
+                    </div>
+                    <div class="add-expense-form-item">
+                        <label for="title" class="add-expense-form-label">Title</label>
+                        <input type="text" id="title" name="title" class="add-inexpensecome-form-input" placeholder="Market">
+                    </div>
+                    <div class="add-expense-form-item">
+                        <label for="description" class="add-expense-form-label">Description</label>
+                        <textarea id="description" name="description" class="add-expense-form-textarea" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                    </div>
+                </div>
+
+                <div class="add-expense-attachment">
+                    <h2 class="add-expense-attachment-title">Attachment</h2>
+                    <div class="add-expense-attachment-input-container">
+                        <input type="file" id="attachment-input" class="add-expense-attachment-input">
+                        <label for="attachment-input" class="add-expense-attachment-label">Select file</label>
+
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Expense</button>
+        </form>
+    </div>
+</body>
+</html> 

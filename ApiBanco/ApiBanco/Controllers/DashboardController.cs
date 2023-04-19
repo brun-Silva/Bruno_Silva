@@ -16,12 +16,9 @@ namespace ApiBanco.Controllers
     {
         private readonly IDashboardService _dashBoardService;
         
-        
         public DashboardController(IDashboardService dashBoardService) 
         {
             _dashBoardService = dashBoardService;
-
-
         }
 
         [Route("getdashboardbyuserid/{userId}")]

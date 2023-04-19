@@ -1,0 +1,85 @@
+/* Estilos para o título "Income" */
+#add-income-title {
+    color: green;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+/* Estilos para os placeholders */
+#add-income-value,
+#add-income-date,
+#add-income-title,
+#add-income-description {
+    margin-top: 20px;
+    margin-left: 50px;
+    display: block;
+    font-weight: bold;
+    color: green;
+}
+
+/* Estilos para o campo de valor */
+#add-income-value-input {
+    margin-left: 50px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+/* Estilos para o campo de data */
+#add-income-date-input {
+    margin-left: 50px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+/* Estilos para o campo de título */
+#add-income-title-input {
+    margin-left: 50px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+/* Estilos para o campo de descrição */
+#add-income-description-input {
+    margin-left: 50px;
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 10px;
+}
+
+/* Estilos para o título "Attachment" */
+#add-income-attachment-title {
+    margin-top: 20px;
+    margin-left: 200px;
+    font-weight: bold;
+    color: green;
+}
+
+/* Estilos para o botão de seleção de imagem */
+#add-income-attachment-btn {
+    margin-top: 10px;
+    margin-left: 200px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: white;
+    color: green;
+    cursor: pointer;
+}
+
+/* Estilos para ocultar o botão de seleção de arquivo */
+#add-income-file-input {
+    display: none;
+}

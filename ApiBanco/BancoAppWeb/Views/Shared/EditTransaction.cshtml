@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "EditTransaction";
+
+}
+
+
+<!DOCTYPE htmlA>
+<html>
+
+<body>
+    <div class="sidebar">
+        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <a href="@Url.Action("Index", "Transaction")">Transactions</a>
+        <a href="@Url.Action("AddIncome", "Transaction")">Add Income</a>
+        <a href="@Url.Action("AddExpense", "Transaction")">Add Expense</a>
+
+    </div>
+    <div class="content">
+
+        <form class="edit-transaction-form" method="POST" action="/edit-transaction">
+            <div class="edit-transaction-container">
+                <h1 class="edit-transaction-title">editTransaction</h1>
+                <div class="edit-transaction-form">
+                    <div class="edit-transaction-form-item">
+                        <label for="value" class="edit-transaction-form-label">Value</label>
+                        <input type="text" id="value" name="value" class="edit-transactione-form-input" placeholder="€ xx">
+                    </div>
+                    <div class="edit-transaction-form-item">
+                        <label for="date" class="edit-transaction-form-label">Date</label>
+                        <input type="text" id="date" name="date" class="edit-transaction-form-input" placeholder="31/12/2023">
+                    </div>
+                    <div class="edit-transaction-form-item">
+                        <label for="title" class="edit-transaction-form-label">Title</label>
+                        <input type="text" id="title" name="title" class="edit-transaction-form-input" placeholder="Market">
+                    </div>
+                    <div class="edit-transaction-form-item">
+                        <label for="description" class="edit-transaction-form-label">Description</label>
+                        <textarea id="description" name="description" class="edit-transaction-form-textarea" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                    </div>
+                </div>
+
+                <div class="edit-transaction-attachment">
+                    <h2 class="edit-transaction-attachment-title">Attachment</h2>
+                    <div class="edit-transaction-attachment-input-container">
+                        <input type="file" id="attachment-input" class="edit-transaction-attachment-input">
+                        <label for="attachment-input" class="edit-transaction-attachment-label">Select file</label>
+
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit Transaction</button>
+        </form>
+    </div>
+</body>
+</html> 

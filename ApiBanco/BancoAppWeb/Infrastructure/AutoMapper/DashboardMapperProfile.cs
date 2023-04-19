@@ -13,5 +13,8 @@ namespace BancoAppWeb.Infrastructure.AutoMapper
                 .ForMember(dtodash => dtodash.timeFrameTransaction, viewmodels => viewmodels.MapFrom(viewmodel => viewmodel.timeFrameTransaction))
                 .ReverseMap();
         }
+
+
     }
+
 }

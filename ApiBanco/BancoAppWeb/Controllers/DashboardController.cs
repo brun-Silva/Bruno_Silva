@@ -1,6 +1,7 @@
 ﻿using ApiBanco.Bussines.Services;
 using BancoAppWeb.Factory;
 using BancoAppWeb.Models;
+using BancoAppWeb.Models.Shared;
 using BancoAppWeb.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -38,6 +39,12 @@ namespace BancoAppWeb.Controllers
 
             return View(viewuser);
 
+        }
+        public IActionResult AddTransaction(ViewModelAddTransaction viewModelAdd)
+        {
+            var viewTranDTO = _viewFactory.ViewTransToDTOTransact(viewModelAdd);
+            _transactionService.AddTransaction(viewTranDTO);
+            return RedirectToAction("Index");
         }
 
         public IActionResult RemoveTransaction(int Id)

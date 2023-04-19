@@ -1,5 +1,9 @@
-﻿@{
+﻿@using BancoAppWeb.Models.ViewModel;
+@{
+    @model ViewModelTrasaction;
     ViewData["Title"] = "Transactions";
+    var transacts = @Model.Transactions;
+
 }
 
 <!DOCTYPE html>
@@ -27,26 +31,21 @@
                 <span class="valueA">Valor</span>
                 <span class="actionA">Ação</span>
             </li>
-            <li>
-                <span class="dateA">10/04/2023</span>
-                <span class="descriptionA">Compras no mercado</span>
-                <span class="valueA expense">- R$ 150,00</span>
-                <span class="actionA">
-                    <span class="downloadA">download</span>
-                    <a class="editA" href="@Url.Action("EditTransaction", "Transaction")">Edit</a>
-                    <span class="removeA">remove</span>
-                </span>
-            </li>
-            <li>
-                <span class="dateA">05/04/2023</span>
-                <span class="descriptionA">Salário</span>
-                <span class="valueA income">+ R$ 2.500,00</span>
-                <span class="actionA">
-                    <span class="downloadA">download</span>
-                    <span class="editA">edit</span>
-                    <span class="removeA">remove</span>
-                </span>
-            </li>
+            @foreach (var transacti in transacts)
+            {
+                <li class="transaction-item">
+                    <p class="dateA">@transacti.Created</p>
+                    <p class="descriptionA">@transacti.Description</p>
+                    <p class="valueA">@transacti.Value</p>
+                    <p class="actionA">
+                        <a class ="downloadA" href="#" >Download</a>
+                        <a class ="editA" href="@Url.Action("EditTransaction", "Transaction",transacti.Id)">Edit</a>
+
+                        @Html.ActionLink("Remove", "RemoveTransaction", "Dashboard", new { Id = transacti.Id },
+                    new { onclick = "return confirm('Are sure wants to delete?');" })
+                    </p>
+                </li>
+            }
             <!-- mais itens da lista aqui... -->
         </ul>
     </div>

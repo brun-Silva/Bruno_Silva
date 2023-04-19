@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BancoAppWeb.Infrastructure.AutoMapper;
+using BancoAppWeb.Models.Shared;
 using BancoAppWeb.Models.ViewModel;
 using User.Data.DTOs;
 
@@ -9,7 +10,8 @@ namespace BancoAppWeb.Factory
     public interface IViewFactory
     {
         ViewModelDashboard ViewModelDashboard(DTODashboard dashboard);
-
+        DTOAddTransaction ViewTransToDTOTransact(ViewModelAddTransaction transaction);
+        ViewModelTrasaction ViewModelTrasaction(List<DTOTransaction> lisDTOTRansactions);
     }
         public class ViewFactory : IViewFactory
         {
@@ -20,7 +22,12 @@ namespace BancoAppWeb.Factory
                 _mapper = mapper;
             }
 
+        public DTOAddTransaction ViewTransToDTOTransact(ViewModelAddTransaction transaction)
+        {
+            var dtoTransaction = _mapper.Map<DTOAddTransaction>(transaction);
 
+            return dtoTransaction;
+        }
 
         public ViewModelDashboard ViewModelDashboard(DTODashboard dashboard)
         {
@@ -28,6 +35,13 @@ namespace BancoAppWeb.Factory
             var dashboardViewModel = _mapper.Map<ViewModelDashboard>(dashboard);
             
             return dashboardViewModel;
+        }
+
+        public ViewModelTrasaction ViewModelTrasaction(List<DTOTransaction> lisDTOTRansactions)
+        {
+            var transactionview = _mapper.Map<ViewModelTrasaction>(lisDTOTRansactions);
+            return transactionview;
+
         }
     }
     

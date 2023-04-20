@@ -2,7 +2,7 @@ using ApiBanco.Bussines.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using User.Data;
-using User.Data.Factory;
+using User.Data.Infrastructure.Factory;
 using User.Data.Interface;
 using User.Data.Repository;
 
@@ -23,6 +23,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IDTOFactory, DTOFactory>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<ApiBancoContext>(opts =>
 {

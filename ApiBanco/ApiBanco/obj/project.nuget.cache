@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "PDeR/myUCyPgNHJApcQ0E8DuJbyG/figGR2cM7NTIYyLMgNLpG2D6RnZUQ5InGsDY+K4n3MxDntEBVIucRGtXA==",
+  "dgSpecHash": "CSkKo2heOp2J4UGuFgvzee/SOHDRoytxce0qSsTot1VfOsIp3M+nBEJwjpbSdedJgPEOBtAU+66F+/J47bJ7DA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bruno\\OneDrive\\Documentos\\Bliss Projects\\ApiBanco\\ApiBanco\\ApiBanco.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bruno\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

@@ -1,10 +1,10 @@
 using ApiBanco.Bussines.Services;
 using Microsoft.EntityFrameworkCore;
-using User.Data.Factory;
 using User.Data.Interface;
 using User.Data.Repository;
 using User.Data;
 using BancoAppWeb.Factory;
+using User.Data.Infrastructure.Factory;
 
 var builder = WebApplication.CreateBuilder(args);
 

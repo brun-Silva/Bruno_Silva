@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using User.Data.DTOs;
-using User.Data.Factory;
+using User.Data.Infrastructure.Factory;
 using User.Data.Interface;
 using User.Data.Models;
 

@@ -140,3 +140,5 @@ C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\ne
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\net6.0\ApiBanco.Bussines.dll
 C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\net6.0\ApiBanco.Bussines.pdb
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\ApiBanco\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

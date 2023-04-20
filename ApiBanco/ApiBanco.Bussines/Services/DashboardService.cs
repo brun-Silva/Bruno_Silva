@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using User.Data.DTOs;
 using User.Data.Entityes;
-using User.Data.Factory;
+using User.Data.Infrastructure.Factory;
 using User.Data.Interface;
 using User.Data.Models;
 

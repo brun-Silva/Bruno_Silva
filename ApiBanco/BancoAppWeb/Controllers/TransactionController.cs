@@ -1,4 +1,5 @@
 ﻿using ApiBanco.Bussines.Services;
+using AutoMapper;
 using BancoAppWeb.Factory;
 using BancoAppWeb.Models;
 using BancoAppWeb.Models.Shared;
@@ -16,11 +17,13 @@ namespace BancoAppWeb.Controllers
         private readonly ILogger<DashboardController> _logger;
         private readonly ITransactionService _transactionService;
         private readonly IViewFactory _viewFactory;
-        public TransactionController(ILogger<DashboardController> logger, ITransactionService transactionService, IViewFactory viewFactory)
+        private readonly IMapper _mapper;
+        public TransactionController(ILogger<DashboardController> logger, ITransactionService transactionService, IViewFactory viewFactory, IMapper mapper)
         {
             _logger = logger;
             _viewFactory = viewFactory;
             _transactionService = transactionService;
+            _mapper = mapper;
         }
 
         public IActionResult Index(string UID, TransactionType transactionType)
@@ -76,11 +79,32 @@ namespace BancoAppWeb.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult EditTransaction(int id)
+        public IActionResult EditTransaction(int modelid)
         {
-            return View("EditTransaction",id);
-        }
+            var transctDTO = _transactionService.GetTransactionByID(modelid);
+            var transctEntit = _transactionService.GetTransactionByID(transctDTO.Id);
 
+            var transactEditModel = new ViewModelEditTransaction
+                {
+                Attachment = transctDTO.Attachment,
+                Value = transctDTO.Value,
+                Title = transctDTO.Title,
+                Description = transctDTO.Description,
+                userId = transctDTO.userId,
+                Id = transctDTO.Id
+                };
+
+            return View("EditTransaction", transactEditModel);
+        }
+        public IActionResult EditTransactionfinal(ViewModelEditTransaction editTransaction)
+        {
+            var transctDTO = _mapper.Map<DTOEditTransaction>(editTransaction);
+
+            _transactionService.UpdateTransactionById(transctDTO);
+
+
+            return View(Index);
+        }
 
 
 

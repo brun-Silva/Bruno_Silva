@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -20,20 +21,19 @@ namespace ApiBanco.Bussines.Services
         bool UpdateTransactionById(DTOEditTransaction transactDTO);
 
     }
-
-
     public class TransactionService : ITransactionService
     {
         private readonly IGenericRepository<TransactionEntity> _transactionReposity;
         private readonly IGenericRepository<AccountEntity> _accountRepository;
         private readonly IDTOFactory _DTOFactory;
+        public readonly IMapper _mapper;
 
-        public TransactionService(IGenericRepository<TransactionEntity> transactionReposity, IDTOFactory DTOFactory, IGenericRepository<AccountEntity> accountRepository) 
+        public TransactionService(IGenericRepository<TransactionEntity> transactionReposity, IDTOFactory DTOFactory, IGenericRepository<AccountEntity> accountRepository, IMapper mapper) 
         {
             _transactionReposity = transactionReposity;
             _DTOFactory = DTOFactory;
             _accountRepository = accountRepository;
-            
+            _mapper = mapper;
 
         }
 
@@ -157,6 +157,8 @@ namespace ApiBanco.Bussines.Services
 
                     }
                 }
+                //var newtransact = _mapper.Map<TransactionEntity>(transactDTO);
+
                 transactEntity.Description = transactDTO.Description;
                 transactEntity.Value = transactDTO.Value;
                 transactEntity.Title = transactDTO.Title;

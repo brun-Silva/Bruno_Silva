@@ -39,7 +39,7 @@
                     <p class="valueA">@transacti.Value</p>
                     <p class="actionA">
                         <a class ="downloadA" href="#" >Download</a>
-                        <a class ="editA" href="@Url.Action("EditTransaction", "Transaction",transacti.Id)">Edit</a>
+                        <a class="editA" href="@Url.Action("EditTransaction", "Transaction", new { modelid = transacti.Id })">Edit</a>
 
                         @Html.ActionLink("Remove", "RemoveTransaction", "Dashboard", new { Id = transacti.Id },
                     new { onclick = "return confirm('Are sure wants to delete?');" })

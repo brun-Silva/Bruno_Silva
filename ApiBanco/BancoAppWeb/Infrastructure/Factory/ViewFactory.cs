@@ -12,6 +12,7 @@ namespace BancoAppWeb.Factory
         ViewModelDashboard ViewModelDashboard(DTODashboard dashboard);
         DTOAddTransaction ViewTransToDTOTransact(ViewModelAddTransaction transaction);
         ViewModelTrasaction ViewModelTrasaction(List<DTOTransaction> lisDTOTRansactions);
+        ViewModelTrasaction ViewModelEditTransaction(DTOEditTransaction transaction);
     }
         public class ViewFactory : IViewFactory
         {
@@ -43,6 +44,19 @@ namespace BancoAppWeb.Factory
             return transactionview;
 
         }
+
+        public ViewModelTrasaction ViewModelEditTransaction(DTOEditTransaction dtotransaction)
+        {
+            var edittransactionView = _mapper.Map<ViewModelTrasaction>(dtotransaction);
+
+
+
+            return edittransactionView;
+
+        }
+
+
+
     }
     
 }

@@ -1,4 +1,7 @@
-﻿@{
+﻿@using BancoAppWeb.Models.Shared;
+
+@{
+    @model ViewModelEditTransaction;
     ViewData["Title"] = "EditTransaction";
 
 }
@@ -17,25 +20,21 @@
     </div>
     <div class="content">
 
-        <form class="edit-transaction-form" method="POST" action="/edit-transaction">
+        <form class="edit-transaction-form" method="POST" action="@Url.Action("EditTransactionFinal", "Transaction", new {id = @Model.Id})">
             <div class="edit-transaction-container">
                 <h1 class="edit-transaction-title">editTransaction</h1>
                 <div class="edit-transaction-form">
                     <div class="edit-transaction-form-item">
                         <label for="value" class="edit-transaction-form-label">Value</label>
-                        <input type="text" id="value" name="value" class="edit-transactione-form-input" placeholder="€ xx">
-                    </div>
-                    <div class="edit-transaction-form-item">
-                        <label for="date" class="edit-transaction-form-label">Date</label>
-                        <input type="text" id="date" name="date" class="edit-transaction-form-input" placeholder="31/12/2023">
+                        <input type="text" id="value" name="value" class="edit-transactione-form-input" placeholder="€@Model.Value">
                     </div>
                     <div class="edit-transaction-form-item">
                         <label for="title" class="edit-transaction-form-label">Title</label>
-                        <input type="text" id="title" name="title" class="edit-transaction-form-input" placeholder="Market">
+                        <input type="text" id="title" name="title" class="edit-transaction-form-input" placeholder="@Model.Title">
                     </div>
                     <div class="edit-transaction-form-item">
                         <label for="description" class="edit-transaction-form-label">Description</label>
-                        <textarea id="description" name="description" class="edit-transaction-form-textarea" placeholder="Lorem ipsum dolor sit amet"></textarea>
+                        <textarea id="description" name="description" class="edit-transaction-form-textarea" placeholder="@Model.Description"></textarea>
                     </div>
                 </div>
 

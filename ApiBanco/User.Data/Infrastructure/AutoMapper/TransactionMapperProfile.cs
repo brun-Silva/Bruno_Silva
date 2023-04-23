@@ -12,8 +12,8 @@ namespace User.Data.Infrastructure.AutoMapper
 {
     public class TransactionMapperProfile : Profile
     {
-        public TransactionMapperProfile() 
-        { 
+        public TransactionMapperProfile()
+        {
             CreateMap<TransactionEntity, DTOAddTransaction>()
                 .ReverseMap();
         }

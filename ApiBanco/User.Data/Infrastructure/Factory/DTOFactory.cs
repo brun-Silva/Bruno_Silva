@@ -145,7 +145,6 @@ namespace User.Data.Infrastructure.Factory
                 _accountRepository.Add(user);
                 _accountRepository.Save();
             }
-
             if (transaction.Type == TransactionType.Expense)
             {
                 user.Expense += transaction.Value;
@@ -164,5 +163,7 @@ namespace User.Data.Infrastructure.Factory
 
             return _mapper.Map<DTOTransaction>(transactionToDTO);
         }
+
+
     }
 }

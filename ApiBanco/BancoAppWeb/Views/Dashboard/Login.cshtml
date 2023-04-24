@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* Estilos CSS para centralizar o formulário */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="@Url.Action("Loginfinal", "Dashboard")">
+        <label for="fName">First Name:</label>
+        <input type="text" id="fName" name="fName" required>
+
+        <br><br>
+
+        <label for="lName">Last Name:</label>
+        <input type="text" id="lName" name="lName" required>
+
+        <br><br>
+
+        <label for="idUser">Email:</label>
+        <input type="email" id="idUser" name="idUser" required>
+
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

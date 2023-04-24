@@ -5,6 +5,7 @@ using User.Data.Interface;
 using User.Data.Models;
 using User.Data.Entityes;
 using ApiBanco.Bussines.Services;
+using User.Data.DTOModel;
 
 namespace ApiBanco.Controllers
 {
@@ -24,6 +25,11 @@ namespace ApiBanco.Controllers
         [Route("getdashboardbyuserid/{userId}")]
         [HttpGet]
         public ActionResult <DTODashboard> GetDashboardByUserId(string userId, TimeFrame timeFrame) => _dashBoardService.GetDashboardByUserId(userId, timeFrame);
+
+
+        [Route("adduser")]
+        [HttpPost]
+        public ActionResult<bool> AddUser([FromBody] DTOAccount account) => _dashBoardService.AddUser(account);
 
     }
 }

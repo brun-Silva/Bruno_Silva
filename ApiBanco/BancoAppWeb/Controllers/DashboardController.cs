@@ -4,7 +4,10 @@ using BancoAppWeb.Models;
 using BancoAppWeb.Models.Shared;
 using BancoAppWeb.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel;
 using System.Diagnostics;
+using User.Data.DTOModel;
 using User.Data.DTOs;
 using User.Data.Entityes;
 using User.Data.Models;
@@ -25,15 +28,39 @@ namespace BancoAppWeb.Controllers
             _transactionService = transactionService;
         }
 
+
+
+        public IActionResult Login()
+        {
+
+            return View("Login");
+        }
+
+        public IActionResult Loginfinal(ViewModelLogin login)
+        {
+
+            var user = _dashboardService.GetDashboardByUserId(login.idUser, TimeFrame.Weekly);
+
+            if (user.idUser == "empty")
+            {
+                _dashboardService.AddUser(new DTOAccount
+                {
+                    userId = login.idUser,
+                    Fname  = login.fName,
+                    Lname = login.lName,
+                });
+
+                user = _dashboardService.GetDashboardByUserId(login.idUser, TimeFrame.Weekly);
+            }
+
+            return RedirectToAction("Index", new { UID = user.idUser, timeFrame = TimeFrame.Weekly });
+        }
+
+
         public IActionResult Index(string UID, TimeFrame timeFrame)
         {
 
            var user = _dashboardService.GetDashboardByUserId(UID, timeFrame);
-
-            if (user.idUser == "empty")
-            {
-                user = _dashboardService.GetDashboardByUserId("bruno2@", TimeFrame.Weekly);
-            }
 
             var viewuser = _viewFactory.ViewModelDashboard(user);
 

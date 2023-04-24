@@ -84,7 +84,7 @@ namespace BancoAppWeb.Controllers
         public IActionResult EditTransaction(int modelid)
         {
             var transctDTO = _transactionService.GetTransactionByID(modelid);
-            var transctEntit = _transactionService.GetTransactionByID(transctDTO.Id);
+
 
             var test = _mapper.Map<ViewModelEditTransaction>(transctDTO);
 

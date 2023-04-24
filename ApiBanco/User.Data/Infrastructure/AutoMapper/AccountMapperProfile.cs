@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using User.Data.DTOModel;
 using User.Data.DTOs;
 using User.Data.Models;
 
@@ -22,6 +23,13 @@ namespace User.Data.Infrastructure.AutoMapper
                 .ReverseMap();
             CreateMap<TransactionEntity, DTOTransaction>()
                 .ReverseMap();
+            CreateMap<DTOAccount, AccountEntity>()
+                .ForMember(accountent => accountent.userId, dtodash => dtodash.MapFrom(dtodash => dtodash.userId))
+                .ForMember(accountent => accountent.FirstName, dtodash => dtodash.MapFrom(dtodash => dtodash.Fname))
+                .ForMember(accountent => accountent.LastName, dtodash => dtodash.MapFrom(dtodash => dtodash.Lname))
+                .ReverseMap(); 
+
+
         }
 
 

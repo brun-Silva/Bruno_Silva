@@ -1,4 +1,5 @@
 ﻿@using BancoAppWeb.Models.ViewModel;
+@using User.Data.Entityes;
 @using User.Data.Models;
 @{
     @model ViewModelDashboard;
@@ -15,7 +16,7 @@
 <body>
 
     <div class="sidebar">
-        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
+        <a href="@Url.Action("Index", "Dashboard", new { UID = @Model.idUser, timeFrame = TimeFrame.Weekly }))">Dashboard</a>
         <a href="@Url.Action("Index", "Transaction", new { UID = @Model.idUser, transactionType = TransactionType.all })">Transactions</a>
         <a href="@Url.Action("AddIncome", "Transaction", new {uid = Model.idUser})">Add Income</a>
         <a href="@Url.Action("AddExpense", "Transaction", new {uid = Model.idUser})">Add Expense</a>

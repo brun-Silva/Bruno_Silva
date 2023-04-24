@@ -1,4 +1,6 @@
-﻿@model string
+﻿@using User.Data.Entityes;
+@using User.Data.Models;
+@model string
 @{
     ViewData["Title"] = "AddExpense";
 
@@ -10,8 +12,8 @@
 
 <body>
     <div class="sidebar">
-        <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
-        <a href="@Url.Action("Index", "Transaction")">Transactions</a>
+        <a href="@Url.Action("Index", "Dashboard", new { UID = Model, timeFrame = TimeFrame.Weekly }))">Dashboard</a>
+        <a href="@Url.Action("Index", "Transaction", new { UID = Model, transactionType = TransactionType.all })">Transactions</a>
 
     </div>
     <div class="content">

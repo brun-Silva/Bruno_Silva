@@ -71,14 +71,16 @@ namespace BancoAppWeb.Controllers
         {
             var viewTranDTO = _viewFactory.ViewTransToDTOTransact(viewModelAdd);
             _transactionService.AddTransaction(viewTranDTO);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { uid = viewModelAdd.userId, timeFrame = TimeFrame.Weekly });
         }
 
         public IActionResult RemoveTransaction(int Id)
         {
+            var trasactiondto = _transactionService.GetTransactionByID(Id);
+            var uid = trasactiondto.userId;
             _transactionService.DeleteTransactionbyId(Id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { uid = uid, timeFrame = TimeFrame.Weekly });
         }
 
 

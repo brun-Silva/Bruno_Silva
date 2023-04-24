@@ -53,7 +53,7 @@ namespace BancoAppWeb.Controllers
             var dtotrans = _viewFactory.ViewTransToDTOTransact(modelAddTransaction);
             _transactionService.AddTransaction(dtotrans);
 
-            return RedirectToAction("Index", uid = uid);
+            return RedirectToAction("Index", new { uid = uid, timeFrame = TimeFrame.Weekly });
         }
 
 
@@ -72,7 +72,7 @@ namespace BancoAppWeb.Controllers
             var dtotrans = _viewFactory.ViewTransToDTOTransact(modelAddTransaction);
             _transactionService.AddTransaction(dtotrans);
 
-            return RedirectToAction("Index",uid = uid);
+            return RedirectToAction("Index", new { uid = uid, timeFrame = TimeFrame.Weekly });
         }
 
         public IActionResult EditTransaction(int modelid)
@@ -89,11 +89,11 @@ namespace BancoAppWeb.Controllers
         public IActionResult EditTransactionfinal(ViewModelEditTransaction editTransaction)
         {
             var transctDTO = _mapper.Map<DTOEditTransaction>(editTransaction);
-
+            var transact = _transactionService.GetTransactionByID(editTransaction.Id);
             _transactionService.UpdateTransactionById(transctDTO);
 
 
-            return RedirectToAction("Index",editTransaction.userId);
+            return RedirectToAction("Index", new { uid = transact.userId, timeFrame = TimeFrame.Weekly } );
         }
 
 

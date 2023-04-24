@@ -13,7 +13,10 @@ namespace BancoAppWeb.Infrastructure.AutoMapper
                 .ReverseMap();
             CreateMap<ViewModelEditTransaction, DTOEditTransaction>()
             .ForMember(viewmodeledit => viewmodeledit.Id, dtoedit => dtoedit.MapFrom(dtoedit=> dtoedit.Id))
-            .ReverseMap();        }
+            .ReverseMap();
+            CreateMap<ViewModelEditTransaction, DTOTransaction>()
+            .ReverseMap();
+        }
 
 
     }

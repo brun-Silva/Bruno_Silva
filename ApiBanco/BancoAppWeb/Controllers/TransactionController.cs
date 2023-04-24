@@ -30,9 +30,11 @@ namespace BancoAppWeb.Controllers
         {
 
             var listTransact = _transactionService.GetTransactionsByUID(UID, transactionType);
-            var model = new ViewModelTrasaction(listTransact);
+            var model = new ViewModelTrasaction(listTransact, UID);
             return View("Transaction",model);
         }
+
+
 
         public IActionResult Dashboard()
         {
@@ -84,17 +86,11 @@ namespace BancoAppWeb.Controllers
             var transctDTO = _transactionService.GetTransactionByID(modelid);
             var transctEntit = _transactionService.GetTransactionByID(transctDTO.Id);
 
-            var transactEditModel = new ViewModelEditTransaction
-                {
-                Attachment = transctDTO.Attachment,
-                Value = transctDTO.Value,
-                Title = transctDTO.Title,
-                Description = transctDTO.Description,
-                userId = transctDTO.userId,
-                Id = transctDTO.Id
-                };
+            var test = _mapper.Map<ViewModelEditTransaction>(transctDTO);
 
-            return View("EditTransaction", transactEditModel);
+
+
+            return View("EditTransaction", test);
         }
         public IActionResult EditTransactionfinal(ViewModelEditTransaction editTransaction)
         {
@@ -103,7 +99,7 @@ namespace BancoAppWeb.Controllers
             _transactionService.UpdateTransactionById(transctDTO);
 
 
-            return View(Index);
+            return RedirectToAction("Index");
         }
 
 

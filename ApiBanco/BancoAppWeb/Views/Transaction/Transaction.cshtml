@@ -1,8 +1,10 @@
 ﻿@using BancoAppWeb.Models.ViewModel;
+@using User.Data.Models;
 @{
     @model ViewModelTrasaction;
     ViewData["Title"] = "Transactions";
     var transacts = @Model.Transactions;
+    var uid = @Model.UID;
 
 }
 
@@ -21,8 +23,9 @@
     <div class="contentA">
         <h1>Transactions</h1>
         <div class="filter-buttonsA">
-            <button class="income-buttonA">Income</button>
-            <button class="expense-buttonA">Expense</button>
+            <a class="income-buttonA" href="@Url.Action("Index", "Transaction", new { UID = uid, transactionType = TransactionType.Income })">Income</a>
+
+            <a class="expense-buttonA" href="@Url.Action("Index", "Transaction", new { UID = uid, transactionType = TransactionType.Expense })">Expense</a>
         </div>
         <ul class="transactions-listA">
             <li class="list-headerA">

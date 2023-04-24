@@ -110,9 +110,10 @@ namespace User.Data.Infrastructure.Factory
             {
                 dtoreturn = _mapper.Map<AccountEntity, DTODashboard>(account, new DTODashboard
                 {
+                    balance = account.Income - account.Expense,
                    timeFrameTransaction = timeFrameTransactionsDto,
-                   LastTransac = lastTransactions
-                });
+                    LastTransac = lastTransactions
+                }); ;
             }
 
 

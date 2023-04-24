@@ -11,4 +11,7 @@ namespace BancoAppWeb.Models.Shared
         public TransactionType? Type { get; set; }
         public string Attachment { get; set; }
     }
+
+
+
 }

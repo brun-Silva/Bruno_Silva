@@ -1,5 +1,7 @@
-﻿@{
+﻿@model string
+@{
     ViewData["Title"] = "AddExpense";
+
 }
 
 
@@ -10,12 +12,11 @@
     <div class="sidebar">
         <a href="@Url.Action("Index", "Dashboard")">Dashboard</a>
         <a href="@Url.Action("Index", "Transaction")">Transactions</a>
-        <a href="@Url.Action("AddIncome", "Transaction")">Add Income</a>
-        <a href="@Url.Action("AddExpense", "Transaction")">Add Expense</a>
+
     </div>
     <div class="content">
 
-        <form class="add-expense-form" method="POST" action="@Url.Action("AddExpenseTransaction", "Transaction")">
+        <form class="add-expense-form" method="POST" action="@Url.Action("AddExpenseTransaction", "Transaction",new {uid = Model})">
             <div class="add-expense-container">
                 <h1 class="add-expense-title">expense</h1>
                 <div class="add-expense-form">

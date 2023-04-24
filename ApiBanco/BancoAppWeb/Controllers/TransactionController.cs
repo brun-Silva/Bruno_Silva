@@ -40,45 +40,39 @@ namespace BancoAppWeb.Controllers
         {
             return View("Index");
         }
-        public IActionResult AddIncome()
+        public IActionResult AddIncome(string uid)
         {
-            return View("AddIncome");
+            return View("AddIncome", uid = uid);
         }
 
-        public IActionResult AddIncomeTransaction(ViewModelAddTransaction modelAddTransaction)
+        public IActionResult AddIncomeTransaction(ViewModelAddTransaction modelAddTransaction, string uid)
         {
-            modelAddTransaction.userId = "bruno2@";
+            modelAddTransaction.userId = uid;
             modelAddTransaction.Attachment = "string";
             modelAddTransaction.Type = TransactionType.Income;
             var dtotrans = _viewFactory.ViewTransToDTOTransact(modelAddTransaction);
             _transactionService.AddTransaction(dtotrans);
 
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult AddTransaction(ViewModelAddTransaction viewModelAdd)
-        {
-            var viewTranDTO = _viewFactory.ViewTransToDTOTransact(viewModelAdd);
-            _transactionService.AddTransaction(viewTranDTO);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", uid = uid);
         }
 
 
-        public IActionResult AddExpense()
+
+        public IActionResult AddExpense(string uid)
         {
-            return View("AddExpense");
+            return View("AddExpense", uid);
         }
 
 
-        public IActionResult AddExpenseTransaction(ViewModelAddTransaction modelAddTransaction)
+        public IActionResult AddExpenseTransaction(ViewModelAddTransaction modelAddTransaction, string uid)
         {
-            modelAddTransaction.userId = "bruno2@";
+            modelAddTransaction.userId = uid;
             modelAddTransaction.Attachment = "string";
             modelAddTransaction.Type = TransactionType.Expense;
             var dtotrans = _viewFactory.ViewTransToDTOTransact(modelAddTransaction);
             _transactionService.AddTransaction(dtotrans);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",uid = uid);
         }
 
         public IActionResult EditTransaction(int modelid)
@@ -99,7 +93,7 @@ namespace BancoAppWeb.Controllers
             _transactionService.UpdateTransactionById(transctDTO);
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",editTransaction.userId);
         }
 
 

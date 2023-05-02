@@ -1,0 +1,17 @@
+﻿
+
+<h3 class="mb-3">New Todo List</h3>
+
+<form method="post" action="@Url.Action("CreateList", "Api")">
+
+    <input type="text" placeholder="List Title" name="name" aria-label="Add Title List" >
+    <input type="text" placeholder="List Description" name="description" aria-label="Add Description List">
+    <button type="submit" class="btn btn-outline-primary">
+        <span class="fas fa-save pe-2"></span>Save
+    </button>
+
+
+    <a href="@Url.Action("IndexTodoList", "Api")" >
+        <span class="fas fa-cancel pe-2"></span>Cancel
+    </a>
+</form>

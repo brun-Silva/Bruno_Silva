@@ -22,7 +22,7 @@ builder.Services.AddScoped<IViewFactory, ViewFactory>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddHttpClient();
 builder.Services.AddDbContext<ApiBancoContext>(opts =>
 {
     var connectionString = builder.Configuration.GetConnectionString("Default");

@@ -250,7 +250,10 @@ h1 {
     }
 
 
+    .complete div.col{
+        text-decoration:line-through;
+    }
 
-
-
-
+    .not__complete{
+        text-decoration:none;
+    }

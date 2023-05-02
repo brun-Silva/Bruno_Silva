@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\bruno\OneDrive\Documentos\Bliss Projects\ApiBanco\BancoAppWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/bruno/OneDrive/Documentos/Bliss Projects/ApiBanco/BancoAppWeb/Views/Api/IndexTodoList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBpXEluZGV4VG9kb0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruno/OneDrive/Documentos/Bliss Projects/ApiBanco/BancoAppWeb/Views/Api/ViewAddList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBpXFZpZXdBZGRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/bruno/OneDrive/Documentos/Bliss Projects/ApiBanco/BancoAppWeb/Views/Api/ViewCardTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBpXFZpZXdDYXJkVGFzay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/bruno/OneDrive/Documentos/Bliss Projects/ApiBanco/BancoAppWeb/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

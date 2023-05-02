@@ -1,0 +1,29 @@
+﻿@using BancoAppWeb.Models.Todolist;
+
+@model ViewModelHomeTodo
+
+<div>
+    <div class="row">
+        <div class="col-9">
+            <h1>TODO Lists</h1>
+        </div>
+        <div class="col-3 text-end">
+            <a href="@Url.Action("GoToViewAddList", "api")" class="btn btn-outline-primary mb-4">
+                <span class="fas fa-plus pr-1"></span> New Todo List
+            </a>
+        </div>
+    </div>
+    @foreach (var todolist in Model.dtoTodoList)
+    {
+        <a href="@Url.Action("viewcard", "api", new { id = todolist.Id})">
+            <div class="card row p-4 mb-3">
+                <div class="container row">
+                    <div class="col-9">
+                        <div class="fs-1">@todolist.Name</div>
+                        <div class="fs-5 fst-italic">@todolist.Description</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
